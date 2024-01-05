@@ -14,7 +14,7 @@ RUN npm install
 COPY ./ ./
 
 # Start app
-CMD ["npm", "run", "build"]
+RUN npm run build
 
 # Set base image
 FROM nginx  
