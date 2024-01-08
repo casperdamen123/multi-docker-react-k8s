@@ -2,12 +2,12 @@ version: "3"
 services:
 
   client:
-    image: "rallycoding/multi-client"
+    image: "casperdamen/multi-client"
     mem_limit: 128m
     hostname: client
 
   server:
-    image: "rallycoding/multi-server"
+    image: "casperdamen/multi-server"
     mem_limit: 128m
     hostname: api
     environment:
@@ -20,15 +20,15 @@ services:
       - PGPORT=$PGPORT
 
   worker:
-    image: "rallycoding/multi-worker"
+    image: "casperdamen/multi-worker"
     mem_limit: 128m
     hostname: worker
     environment:
       - REDIS_HOST=$REDIS_HOST
       - REDIS_PORT=$REDIS_PORT
-      
+
   nginx:
-    image: "rallycoding/multi-nginx"
+    image: "casperdamen/multi-nginx"
     mem_limit: 128m
     hostname: nginx
     ports:
