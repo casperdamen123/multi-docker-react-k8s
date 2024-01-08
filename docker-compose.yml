@@ -11,13 +11,13 @@ services:
     mem_limit: 128m
     hostname: api
     environment:
-      - REDIS_HOST=$REDIS_HOST
-      - REDIS_PORT=$REDIS_PORT
-      - PGUSER=$PGUSER
-      - PGHOST=$PGHOST
-      - PGDATABASE=$PGDATABASE
-      - PGPASSWORD=$PGPASSWORD
-      - PGPORT=$PGPORT
+      - REDIS_HOST
+      - REDIS_PORT
+      - PGUSER
+      - PGHOST
+      - PGDATABASE
+      - PGPASSWORD
+      - PGPORT
 
   worker:
     image: "casperdamen/multi-worker"
