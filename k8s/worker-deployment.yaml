@@ -20,10 +20,6 @@ spec:
               value: redis-cluster-ip-service
             - name: REDIS_PORT
               value: "6379"
-          resources:
-            limits:
-              memory: "256Mi"
-              cpu: "1"
           # This is the only difference between this file and the client and server deployment files.
           # This is because the worker container does not need to be exposed to the outside world.
           # It only needs to be able to communicate with the other containers in the cluster.

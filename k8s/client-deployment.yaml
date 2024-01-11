@@ -15,9 +15,5 @@ spec:
       containers:
         - name: client
           image: casperdamen/multi-client
-          resources:
-            limits:
-              memory: "128Mi"
-              cpu: "1"
           ports:
             - containerPort: 3000

@@ -33,9 +33,5 @@ spec:
                 secretKeyRef:
                   name: postgres-secrets
                   key: password
-          resources:
-            limits:
-              memory: "256Mi"
-              cpu: "1"
           ports:
             - containerPort: 5000
