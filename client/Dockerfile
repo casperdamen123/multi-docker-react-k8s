@@ -1,11 +1,29 @@
+# Set builder image
 FROM node:16-alpine as builder
-WORKDIR '/app'
+
+# Working directory
+WORKDIR /APP
+
+# Copy requirements
 COPY ./package.json ./
+
+# Install npm
 RUN npm install
-COPY . .
+
+# Copy rest of application code
+COPY ./ ./
+
+# Start app
 RUN npm run build
 
-FROM nginx
+# Set base image
+FROM nginx  
+
+# Expose port 3000
 EXPOSE 3000
+
+# Copy configuration files
 COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
-COPY --from=builder /app/build /usr/share/nginx/html
+
+# Copy build files
+COPY --from=builder /APP/build /usr/share/nginx/html
