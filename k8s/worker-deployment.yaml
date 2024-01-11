@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: worker
+  template:
+    metadata:
+      labels:
+        component: worker
+    spec:
+      containers:
+        - name: worker
+          image: stephengrider/multi-worker
+          env:
+            - name: REDIS_HOST
+              value: redis-cluster-ip-service
+            - name: REDIS_PORT
+              value: "6379"
+          resources:
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+          # This is the only difference between this file and the client and server deployment files.
+          # This is because the worker container does not need to be exposed to the outside world.
+          # It only needs to be able to communicate with the other containers in the cluster.
+          # Therefore, we do not need to create a service for the worker container.
+          # We only need to create a service for the client and server containers.
