@@ -10,7 +10,7 @@ COPY ./package.json ./
 # Install npm
 RUN npm install
 
-# Copy rest of application code
+# Copy the rest of application code
 COPY ./ ./
 
 # Start app
