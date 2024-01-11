@@ -13,7 +13,7 @@ RUN npm install
 # Copy rest of application code
 COPY ./ ./
 
-# Start app
+# Start the app
 RUN npm run build
 
 # Set base image
